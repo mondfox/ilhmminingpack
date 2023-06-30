@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shitfucked "website" for mining overlay pack thingo</title>
+</head>
+
+<body>
+    <header>download website wOOWOOOW</header>
+    <br>
+    <header>i would recommend:</header>
+    <header>-cobble overlay, ewarp noise & glass break noise for dillo</header>
+    <header>-glass pane overlay, ewarp noise & glass break noise for manual gemstone mining</header>
+    <header>-turning off all overlays other than glass pane and sometimes cobble because they are ugly and dumb and also not finished :)</header>
+    <br>
+    <button onclick="menutoggle()" id="menutoggle">Customize Download</button>
+
+    <header id="menus" style="display: none;">
+        <br>
+        <button onclick="sndtoggle()" id="sndtoggle">Sound Menu</button>
+            <header id="sounds" style="display: none;">
+                <br>
+                <label><input type="checkbox" name="setting" value="sndewarp" checked>Custom Etherwarp noise</label>
+                <br>
+                <label><input type="checkbox" name="setting" value="sndglass" checked>Custom Gemstone/Glass break noise</label>
+            </header>
+        <br>
+        <button onclick="oltoggle()" id="oltoggle">Overlay/Texture Menu</button>
+            <header id="ol" style="display: none;">
+                <br>
+                <label><input type="checkbox" name="setting" value="olpane" checked>Glass Pane Overlay</label>
+                <br>
+                <label><input type="checkbox" name="setting" value="olcobble" checked>Cobblestone Overlay</label>
+                <br>
+                <label><input type="checkbox" name="setting" value="olsand" checked>Sand/Sandstone Overlay</label>
+                <br>
+                <label><input type="checkbox" name="setting" value="olquartz" checked>Quartz/Bedrock Overlay</label>
+            </header>
+    </header>
+    <br>
+    <button onclick="check()">Download</button>
+
+    <script>
+
+        function menutoggle() {
+            var menutoggle = document.getElementById("menus")
+            if (menutoggle.style.display === "none"){
+                menutoggle.style.display = "block"
+            } else {
+                menutoggle.style.display = "none"
+            }
+        }
+        function sndtoggle() {
+            var sndtoggle = document.getElementById("sounds")
+            if (sndtoggle.style.display === "none"){
+                sndtoggle.style.display = "block"
+            } else {
+                sndtoggle.style.display = "none"
+            }
+        }
+        function oltoggle() {
+            var oltoggle = document.getElementById("ol")
+            if (oltoggle.style.display === "none"){
+                oltoggle.style.display = "block"
+            } else {
+                oltoggle.style.display = "none"
+            }
+        }
+        function check() {
+            var settings = document.getElementsByName("setting")
+            var result = ""
+            for (var i = 0; i < settings.length; i++) {
+                if (settings[i].checked) {
+                    result += settings[i].value + " "
+                }
+            }
+            document.write("<p>" + result + "</p>")
+        }
+    </script>
+</body>
+</html>
