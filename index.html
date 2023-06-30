@@ -42,6 +42,7 @@
             <label><input type="checkbox" name="setting" value='rmdir "%deletepath%assets\minecraft\textures\" /s /q & echo Deleted All Overlays/Textures! & '>Disable All Overlays</label>
             <header id="ol" style="display: none;">
                 <br>
+                
                 <label><input type="checkbox" name="setting" value='rmdir "%deletepath%assets\minecraft\models" /s /q & del "%deletepath%assets\minecraft\textures\blocks\glass_pane_edges.png">nul & del "%deletepath%assets\minecraft\textures\blocks\glass_pane_sides.png">nul & echo Deleted Gemstone Shard Textures!  & ' checked>Glass Pane Overlay</label>
                 <br>
                 <label><input type="checkbox" name="setting" value='del "%deletepath%assets\minecraft\textures\blocks\glass_light_blue.png">nul & del "%deletepath%assets\minecraft\textures\blocks\glass_lime.png">nul & del "%deletepath%assets\minecraft\textures\blocks\glass_magenta.png">nul & del "%deletepath%assets\minecraft\textures\blocks\glass_orange.png">nul & del "%deletepath%assets\minecraft\textures\blocks\glass_purple.png">nul & del "%deletepath%assets\minecraft\textures\blocks\glass_red.png">nul & del "%deletepath%assets\minecraft\textures\blocks\glass_yellow.png">nul & echo Deleted Gemstone Block Textures!  & ' checked>Glass Block Overlay</label>
@@ -50,11 +51,17 @@
                 <br>
                 <label><input type="checkbox" name="setting" value='del "%deletepath%assets\minecraft\textures\blocks\sandstone_top.png">nul & del "%deletepath%assets\minecraft\textures\blocks\sandstone_normal.png">nul & echo Deleted Sandstone Textures! & ' checked>Sand/Sandstone Overlay</label>
                 <br>
+                <label><input type="checkbox" name="setting" value='del "%deletepath%assets\minecraft\textures\blocks\red_sandstone_top.png">nul & del "%deletepath%assets\minecraft\textures\blocks\red_sandstone_normal.png">nul & echo Deleted Red Sandstone Textures! & ' checked>Sand/Sandstone Overlay</label>
+                <br>
                 <label><input type="checkbox" name="setting" value='del "%deletepath%assets\minecraft\textures\blocks\bedrock.png">nul & echo Deleted Bedrock Texture! & ' checked>Quartz/Bedrock Overlay</label>
+                <br>
+                <label><input type="checkbox" name="setting" value='del "%deletepath%assets\minecraft\textures\blocks\hardened_clay_stained_gray.png">nul & echo Deleted Grey Clay Texture! & ' checked>Mycelium Overlay</label>
+                <br>
+                <label><input type="checkbox" name="setting" value='del "%deletepath%assets\minecraft\textures\blocks\quartz_ore.png">nul & echo Deleted Quartz Texture! & ' checked>Quartz Overlay</label>
             </header>
     </header>
     <br>
-    <button onclick="batchdel()">Download</button>
+    <button onclick="batchdel()" id="downloadbutton" >Download</button>
     <br>
     <button onclick="downloadtoggle()" id="downloadtoggle">Download Info</button>
     <span id="download" style="display:none;">
@@ -128,6 +135,7 @@
 
         function menutoggle() {
             var menutoggle = document.getElementById("menus")
+            document.getElementById("downloadbutton").innerHTML = "Download"
             if (menutoggle.style.display === "none"){
                 menutoggle.style.display = "block"
             } else {
@@ -136,6 +144,7 @@
         }
         function sndtoggle() {
             var sndtoggle = document.getElementById("sounds")
+            document.getElementById("downloadbutton").innerHTML = "Download"
             if (sndtoggle.style.display === "none"){
                 sndtoggle.style.display = "block"
             } else {
@@ -144,6 +153,7 @@
         }
         function oltoggle() {
             var oltoggle = document.getElementById("ol")
+            document.getElementById("downloadbutton").innerHTML = "Download"
             if (oltoggle.style.display === "none"){
                 oltoggle.style.display = "block"
             } else {
@@ -160,12 +170,17 @@
                 }
             }
             result += "pause"
-            const link = document.createElement("a");
-            const file = new Blob([result], { type: 'text/plain' });
-            link.href = URL.createObjectURL(file);
-            link.download = "customdelete.bat";
-            link.click();
-            URL.revokeObjectURL(link.href);
+            if (result === "@echo off & set deletepath=%~dp0 & pause"){
+                document.getElementById("downloadbutton").innerHTML = "Nothing is selected! Click Customize Download."
+ 
+            }else {
+                const link = document.createElement("a");
+                const file = new Blob([result], { type: 'text/plain' });
+                link.href = URL.createObjectURL(file);
+                link.download = "customdelete.bat";
+                link.click();
+                URL.revokeObjectURL(link.href);
+            }
         }
     </script>
 </body>
