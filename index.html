@@ -3,45 +3,128 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shitfucked "website" for mining overlay pack thingo</title>
+    <title>"website" for mining overlay pack thingo</title>
 </head>
 
 <body>
-    <header>download website wOOWOOOW</header>
+    <head>TEXTURE PACK FEATURE SELECTION WOOOOOO</head>
+    <br><br>
+    <img src="https://raw.githubusercontent.com/mondfox/ilhmminingpack/main/dog2.gif" alt="its loading chill">
     <br>
-    <header>i would recommend:</header>
-    <header>-cobble overlay, ewarp noise & glass break noise for dillo</header>
-    <header>-glass pane overlay, ewarp noise & glass break noise for manual gemstone mining</header>
-    <header>-turning off all overlays other than glass pane and sometimes cobble because they are ugly and dumb and also not finished :)</header>
+    <br>
+    <span>    
+        i would recommend:
+        <br>
+        -cobble overlay, ewarp noise & glass break noise for dillo
+        <br>
+        -glass pane overlay, ewarp noise & glass break noise for manual gemstone mining
+        <br>
+        -turning off all overlays other than glass pane and sometimes cobble because they are ugly and dumb and also not finished :)
+        <br>
+    </span>
+
     <br>
     <button onclick="menutoggle()" id="menutoggle">Customize Download</button>
+    
 
     <header id="menus" style="display: none;">
         <br>
         <button onclick="sndtoggle()" id="sndtoggle">Sound Menu</button>
+            <label><input type="checkbox" name="setting" value='rmdir "%deletepath%assets\minecraft\sounds\" /s /q & echo Deleted All Sounds! & '>Disable All Sounds</label>
             <header id="sounds" style="display: none;">
                 <br>
-                <label><input type="checkbox" name="setting" value="sndewarp" checked>Custom Etherwarp noise</label>
+                <label><input type="checkbox" name="setting" value='rmdir "%deletepath%assets\minecraft\sounds\mob\" /s /q & echo Deleted Etherwarp Noise! & ' checked>Custom Etherwarp noise</label>
                 <br>
-                <label><input type="checkbox" name="setting" value="sndglass" checked>Custom Gemstone/Glass break noise</label>
+                <label><input type="checkbox" name="setting" value='rmdir "%deletepath%assets\minecraft\sounds\random" /s /q & echo Deleted Gemstone Break Noise! & ' checked>Custom Gemstone/Glass break noise</label>
             </header>
         <br>
         <button onclick="oltoggle()" id="oltoggle">Overlay/Texture Menu</button>
+            <label><input type="checkbox" name="setting" value='rmdir "%deletepath%assets\minecraft\textures\" /s /q & echo Deleted All Overlays/Textures! & '>Disable All Overlays</label>
             <header id="ol" style="display: none;">
                 <br>
-                <label><input type="checkbox" name="setting" value="olpane" checked>Glass Pane Overlay</label>
+                <label><input type="checkbox" name="setting" value='rmdir "%deletepath%assets\minecraft\models" /s /q & del "%deletepath%assets\minecraft\textures\blocks\glass_pane_edges.png">nul & del "%deletepath%assets\minecraft\textures\blocks\glass_pane_sides.png">nul & echo Deleted Gemstone Shard Textures!  & ' checked>Glass Pane Overlay</label>
                 <br>
-                <label><input type="checkbox" name="setting" value="olcobble" checked>Cobblestone Overlay</label>
+                <label><input type="checkbox" name="setting" value='del "%deletepath%assets\minecraft\textures\blocks\glass_light_blue.png">nul & del "%deletepath%assets\minecraft\textures\blocks\glass_lime.png">nul & del "%deletepath%assets\minecraft\textures\blocks\glass_magenta.png">nul & del "%deletepath%assets\minecraft\textures\blocks\glass_orange.png">nul & del "%deletepath%assets\minecraft\textures\blocks\glass_purple.png">nul & del "%deletepath%assets\minecraft\textures\blocks\glass_red.png">nul & del "%deletepath%assets\minecraft\textures\blocks\glass_yellow.png">nul & echo Deleted Gemstone Block Textures!  & ' checked>Glass Block Overlay</label>
                 <br>
-                <label><input type="checkbox" name="setting" value="olsand" checked>Sand/Sandstone Overlay</label>
+                <label><input type="checkbox" name="setting" value='del "%deletepath%assets\minecraft\textures\blocks\cobblestone.png">nul & echo Deleted Cobblestone Texture! & ' checked>Cobblestone Overlay</label>
                 <br>
-                <label><input type="checkbox" name="setting" value="olquartz" checked>Quartz/Bedrock Overlay</label>
+                <label><input type="checkbox" name="setting" value='del "%deletepath%assets\minecraft\textures\blocks\sandstone_top.png">nul & del "%deletepath%assets\minecraft\textures\blocks\sandstone_normal.png">nul & echo Deleted Sandstone Textures! & ' checked>Sand/Sandstone Overlay</label>
+                <br>
+                <label><input type="checkbox" name="setting" value='del "%deletepath%assets\minecraft\textures\blocks\bedrock.png">nul & echo Deleted Bedrock Texture! & ' checked>Quartz/Bedrock Overlay</label>
             </header>
     </header>
     <br>
-    <button onclick="check()">Download</button>
-
+    <button onclick="batchdel()">Download</button>
+    <br>
+    <button onclick="downloadtoggle()" id="downloadtoggle">Download Info</button>
+    <span id="download" style="display:none;">
+        -when you click the button that says download, it will look at all selected options and create a windows .bat file to delete unselected options, then download the file
+        <br>
+        <img src="https://raw.githubusercontent.com/mondfox/ilhmminingpack/main/savefile.png">
+        <br>
+        -to use this .bat file, unzip your texture pack folder and place the .bat inside (in the same folder as the assets folder(not in the assets folder but the folder it is in))
+        <br>
+        <img src="https://raw.githubusercontent.com/mondfox/ilhmminingpack/main/batinpack.png">
+        <br>
+        <img src="https://raw.githubusercontent.com/mondfox/ilhmminingpack/main/extract.png">
+        <br>
+        -after it is in this folder, run the .bat
+        <br>
+        -because .bat files can be malicious, windows will "protect your pc" by not allowing the file to run. if youre concerned about running it, click below to show more info.
+        <br>
+        <button onclick="battoggle()">Click here for more info on the .bat file</button>
+        <span id="bat" style="display: none;">
+            <br>
+            ALL COMMANDS AND THINGS USED IN THE BAT FILE:
+            <br>
+            -@echo off:  shuts off batch screaming at you when it does things
+            <br>
+            -set deletepath=%~dp0:  sets %deletepath% to current location that batch file is in
+            <br>
+            -rmdir "%deletepath%assets\minecraft\(something)" /s /q:  delete textures/sound/etc folder and all contents
+            <br>
+            -echo (something):  say something in console
+            <br>
+            -del "%deletepath%assets\minecraft\(something)">nul:  delete a file inside a folder
+            <br>
+            -pause: stop console from closing when all commands have run
+            <br>
+        </span>
+        <br>
+        -to get around windows blocking the file, simply click "more info", then "run anyways"
+        <br>
+        <img src="https://raw.githubusercontent.com/mondfox/ilhmminingpack/main/windowsprot1.png">
+        <br>
+        <img src="https://raw.githubusercontent.com/mondfox/ilhmminingpack/main/windowsprot2.png">
+        <br>
+        -it should look like this after it runs. If it does, good! close the console and delete the .bat file. youre ready to use the pack
+        <br>
+        <img src="https://raw.githubusercontent.com/mondfox/ilhmminingpack/main/perfect.png">
+        <br>
+        -if it doesnt, you probably have it in the wrong folder OR youve already run the file. check the folder its in. is it the texture pack folder? does it have all the files?
+        <br>
+        -if it is working properly, the only text to show up should be "deleted (files)" (ex. Deleted Cobblestone Texture!) (if you dont have all the text thats in the example, its probably still fine)
+        <br>
+    </span>
     <script>
+
+        function downloadtoggle() {
+            var downloadtoggle = document.getElementById("download")
+            if (downloadtoggle.style.display === "none"){
+                downloadtoggle.style.display = "block"
+            } else {
+                downloadtoggle.style.display = "none"
+            }
+        }
+
+        function battoggle() {
+            var battoggle = document.getElementById("bat")
+            if (battoggle.style.display === "none"){
+                battoggle.style.display = "block"
+            } else {
+                battoggle.style.display = "none"
+            }
+        }
 
         function menutoggle() {
             var menutoggle = document.getElementById("menus")
@@ -67,15 +150,22 @@
                 oltoggle.style.display = "none"
             }
         }
-        function check() {
+
+        function batchdel() {
             var settings = document.getElementsByName("setting")
-            var result = ""
+            var result = "@echo off & set deletepath=%~dp0 & "
             for (var i = 0; i < settings.length; i++) {
-                if (settings[i].checked) {
+                if (settings[i].unchecked) {
                     result += settings[i].value + " "
                 }
             }
-            document.write("<p>" + result + "</p>")
+            result += "pause"
+            const link = document.createElement("a");
+            const file = new Blob([result], { type: 'text/plain' });
+            link.href = URL.createObjectURL(file);
+            link.download = "customdelete.bat";
+            link.click();
+            URL.revokeObjectURL(link.href);
         }
     </script>
 </body>
